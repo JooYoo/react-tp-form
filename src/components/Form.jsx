@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Form = () => {
+  const [name, setName] = useState("");
+  const [comment, setComment] = useState("");
+  const [tech, setTech] = useState("Vue");
+
   return (
     <form>
       <h4>Form</h4>
 
       <div>
         <label>Name</label>
-        <input type="text" />
+        <input type="text" value={name} />
       </div>
 
       <div>
         <label>Comment</label>
-        <textarea></textarea>
+        <textarea value={comment}></textarea>
       </div>
 
       <div>
-        <select value="Vue">
+        <select value={tech}>
           <option value="React">React</option>
           <option value="Vue">Vue</option>
           <option value="Angular">Angular</option>
