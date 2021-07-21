@@ -5,22 +5,34 @@ const Form = () => {
   const [comment, setComment] = useState("");
   const [tech, setTech] = useState("Vue");
 
+  const setNameHandler = (e) => {
+    setName(e.target.value);
+  };
+
+  const setCommentHandler = (e) => {
+    setComment(e.target.value);
+  };
+
+  const setTechHandler = (e) => {
+    setTech(e.target.value);
+  };
+
   return (
     <form>
       <h4>Form</h4>
 
       <div>
         <label>Name</label>
-        <input type="text" value={name} />
+        <input type="text" value={name} onChange={setNameHandler} />
       </div>
 
       <div>
         <label>Comment</label>
-        <textarea value={comment}></textarea>
+        <textarea value={comment} onChange={setCommentHandler}></textarea>
       </div>
 
       <div>
-        <select value={tech}>
+        <select value={tech} onChange={setTechHandler}>
           <option value="React">React</option>
           <option value="Vue">Vue</option>
           <option value="Angular">Angular</option>
