@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 const Form = () => {
+  const initObjs = [];
+  const [objs, setObjs] = useState(initObjs);
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
   const [tech, setTech] = useState("Vue");
@@ -17,8 +19,25 @@ const Form = () => {
     setTech(e.target.value);
   };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    // new obj
+    const newObj = {
+      name: name,
+      comment: comment,
+      tech: tech
+    };
+
+    // add new obj to data source
+    setObjs([...objs, newObj]);
+
+    // TODO: display end result
+    console.table(objs);
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <h4>Form</h4>
 
       <div>
@@ -32,6 +51,7 @@ const Form = () => {
       </div>
 
       <div>
+        <label>Tech</label>
         <select value={tech} onChange={setTechHandler}>
           <option value="React">React</option>
           <option value="Vue">Vue</option>
