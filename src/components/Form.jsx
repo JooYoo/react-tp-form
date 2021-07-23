@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Form = () => {
   const initObjs = [];
@@ -32,9 +32,15 @@ const Form = () => {
     // add new obj to data source
     setObjs([...objs, newObj]);
 
-    // TODO: display end result
-    console.table(objs);
+    // clean up inputs
+    setName("");
+    setComment("");
   };
+
+  // get the final result
+  useEffect(() => {
+    console.table(objs);
+  }, [objs]);
 
   return (
     <form onSubmit={submitHandler}>
